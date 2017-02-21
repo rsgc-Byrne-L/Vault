@@ -14,6 +14,7 @@
 		0C5BAC3C1E45092E00193E99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C5BAC3B1E45092E00193E99 /* Assets.xcassets */; };
 		0C5BAC3F1E45092E00193E99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C5BAC3D1E45092E00193E99 /* LaunchScreen.storyboard */; };
 		0C5BAC4A1E45092E00193E99 /* VaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5BAC491E45092E00193E99 /* VaultTests.swift */; };
+		0C7A9A811E5C826600FFB663 /* Cipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A9A801E5C826600FFB663 /* Cipher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		0C5BAC451E45092E00193E99 /* VaultTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VaultTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C5BAC491E45092E00193E99 /* VaultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultTests.swift; sourceTree = "<group>"; };
 		0C5BAC4B1E45092E00193E99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C7A9A801E5C826600FFB663 /* Cipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cipher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			children = (
 				0C5BAC311E45092E00193E99 /* AppDelegate.swift */,
 				0C5BAC331E45092E00193E99 /* ViewController.swift */,
+				0C7A9A801E5C826600FFB663 /* Cipher.swift */,
 				0C5BAC351E45092E00193E99 /* Main.storyboard */,
 				0C5BAC3B1E45092E00193E99 /* Assets.xcassets */,
 				0C5BAC3D1E45092E00193E99 /* LaunchScreen.storyboard */,
@@ -204,6 +207,7 @@
 			files = (
 				0C5BAC341E45092E00193E99 /* ViewController.swift in Sources */,
 				0C5BAC321E45092E00193E99 /* AppDelegate.swift in Sources */,
+				0C7A9A811E5C826600FFB663 /* Cipher.swift in Sources */,
 				0C5BAC3A1E45092E00193E99 /* Vault.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,6 +414,7 @@
 				0C5BAC501E45092E00193E99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0C5BAC511E45092E00193E99 /* Build configuration list for PBXNativeTarget "VaultTests" */ = {
 			isa = XCConfigurationList;
@@ -418,6 +423,7 @@
 				0C5BAC531E45092E00193E99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
