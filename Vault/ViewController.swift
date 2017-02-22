@@ -9,6 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var original = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    var cipher = ["X","Y","Z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W"]
+    var count = 0
+    var letterCount = 0
 
     // MARK: Properties
     @IBOutlet weak var encryptField: UITextField!
@@ -17,7 +21,27 @@ class ViewController: UIViewController {
     @IBOutlet weak var decryptView: UITextView!
     @IBAction func doEncrypt(_ sender: UIButton) {
         var encryptMessage: String? = encryptField.text
+        encryptMessage = encryptMessage?.uppercased()
         encryptView.text = encryptMessage
+        let messageCount : Int = (encryptMessage?.characters.count)!
+        var arrayMessage = encryptMessage?.characters.map { String($0) }
+        count = 0
+        letterCount = 0
+        while count < messageCount {
+            while letterCount < 26 {
+                print(letterCount)
+                print(count)
+                if arrayMessage?[count] == original[letterCount] {
+                    arrayMessage?[count] = cipher[letterCount]
+                }
+                letterCount += 1
+            }
+            letterCount = 0
+            count += 1
+        }
+        let arrayMessageString = arrayMessage?.joined(separator: "")
+        encryptView.text = arrayMessageString
+        
     }
     @IBAction func doDecrypt(_ sender: UIButton) {
     }
