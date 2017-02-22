@@ -33,7 +33,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="185" translatesAutoresizingMaskIntoConstraints="NO" id="MaZ-Q7-yMB">
-                                <frame key="frameInset" minX="50.00%" minY="127" width="61" height="227"/>
+                                <frame key="frameInset" minX="50.00%" minY="127" width="61" height="226"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Encrypt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lBy-Mz-UDe">
@@ -68,6 +68,9 @@
                                 <frame key="frameInset" minX="44.27%" minY="436" width="12.27%" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Go"/>
+                                <connections>
+                                    <action selector="doDecrypt:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gGi-yI-8WF"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lGf-Sb-66p">
                                 <frame key="frameInset" minX="29.87%" minY="194" width="53.33%" height="30"/>
@@ -94,10 +97,19 @@
                                 <frame key="frameInset" minX="41.60%" minY="232" width="16.27%" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Go"/>
+                                <connections>
+                                    <action selector="doEncrypt:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tHs-9o-3aV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="decryptField" destination="6aV-Ie-nSX" id="Qjg-E5-mlr"/>
+                        <outlet property="decryptView" destination="Cfc-Vg-Ez5" id="rgA-P1-xQJ"/>
+                        <outlet property="encryptField" destination="Ck0-2W-lid" id="AGg-DX-TsY"/>
+                        <outlet property="encryptView" destination="lGf-Sb-66p" id="Xv0-TM-pPb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
