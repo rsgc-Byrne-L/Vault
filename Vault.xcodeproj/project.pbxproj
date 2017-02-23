@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C23B72E1E5E83B300B5C5A0 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C23B72D1E5E83B300B5C5A0 /* LocalAuthentication.framework */; };
 		0C5BAC321E45092E00193E99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5BAC311E45092E00193E99 /* AppDelegate.swift */; };
 		0C5BAC341E45092E00193E99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5BAC331E45092E00193E99 /* ViewController.swift */; };
 		0C5BAC371E45092E00193E99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C5BAC351E45092E00193E99 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C23B72D1E5E83B300B5C5A0 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		0C5BAC2E1E45092E00193E99 /* Vault.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vault.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C5BAC311E45092E00193E99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C5BAC331E45092E00193E99 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C23B72E1E5E83B300B5C5A0 /* LocalAuthentication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +63,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C23B72C1E5E83B300B5C5A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C23B72D1E5E83B300B5C5A0 /* LocalAuthentication.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0C5BAC251E45092E00193E99 = {
 			isa = PBXGroup;
 			children = (
 				0C5BAC301E45092E00193E99 /* Vault */,
 				0C5BAC481E45092E00193E99 /* VaultTests */,
 				0C5BAC2F1E45092E00193E99 /* Products */,
+				0C23B72C1E5E83B300B5C5A0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,11 +159,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Liam Byrne";
 				TargetAttributes = {
 					0C5BAC2D1E45092E00193E99 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 33WA7C89E5;
 						ProvisioningStyle = Automatic;
 					};
 					0C5BAC441E45092E00193E99 = {
@@ -268,6 +281,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -318,6 +332,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -347,6 +362,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 33WA7C89E5;
 				INFOPLIST_FILE = Vault/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.on.rsgc.Vault;
@@ -359,6 +375,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 33WA7C89E5;
 				INFOPLIST_FILE = Vault/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.on.rsgc.Vault;
