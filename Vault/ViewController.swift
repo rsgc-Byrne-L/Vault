@@ -77,6 +77,9 @@ class ViewController: UIViewController {
         decryptView.text = arrayMessageString
         
     }
+    @IBAction func transferMessage(_ sender: UIButton) {
+        decryptField.text = encryptView.text
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
