@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Vigenere-->
         <scene sceneID="OZC-5q-KsN">
             <objects>
-                <viewController id="wKd-HP-IKc" sceneMemberID="viewController">
+                <viewController id="wKd-HP-IKc" customClass="ViewController" customModule="Vault" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sF3-Fk-tJY"/>
                         <viewControllerLayoutGuide type="bottom" id="kyT-FH-XdT"/>
@@ -127,16 +127,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="zHZ-2h-rlm"/>
+                    <tabBarItem key="tabBarItem" title="Vigenere" id="zHZ-2h-rlm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="96P-uE-vpZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2196" y="519.49025487256381"/>
         </scene>
-        <!--Item 1-->
+        <!--Caesar-->
         <scene sceneID="Sdl-gc-8Ec">
             <objects>
-                <viewController id="SWt-bv-XyG" sceneMemberID="viewController">
+                <viewController id="SWt-bv-XyG" customClass="ViewController" customModule="Vault" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LlO-SU-UXt"/>
                         <viewControllerLayoutGuide type="bottom" id="47y-JP-P5B"/>
@@ -184,6 +184,9 @@
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Go"/>
+                                <connections>
+                                    <action selector="doDecrypt:" destination="SWt-bv-XyG" eventType="touchUpInside" id="C0J-jq-Qq5"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lGf-Sb-66p">
                                 <rect key="frame" x="63" y="140" width="249" height="30"/>
@@ -206,6 +209,9 @@
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Go"/>
+                                <connections>
+                                    <action selector="doEncrypt:" destination="SWt-bv-XyG" eventType="touchUpInside" id="CNR-HZ-JEE"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="soJ-Do-j0v">
                                 <rect key="frame" x="205" y="177" width="61" height="30"/>
@@ -214,6 +220,9 @@
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clearEncrypt:" destination="SWt-bv-XyG" eventType="touchUpInside" id="SqF-dg-OhY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJY-7t-DbH">
                                 <rect key="frame" x="205" y="382" width="61" height="30"/>
@@ -222,6 +231,9 @@
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clearDecrypt:" destination="SWt-bv-XyG" eventType="touchUpInside" id="OLt-HC-7Pf"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Znq-RG-mFn">
                                 <rect key="frame" x="116" y="436" width="150" height="30"/>
@@ -230,6 +242,9 @@
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Clear All"/>
+                                <connections>
+                                    <action selector="clearAll:" destination="SWt-bv-XyG" eventType="touchUpInside" id="yJi-fE-Twy"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vou-KC-1dJ">
                                 <rect key="frame" x="116" y="230" width="150" height="30"/>
@@ -240,6 +255,9 @@
                                 <state key="normal" title="↓">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="transferMessage:" destination="SWt-bv-XyG" eventType="touchUpInside" id="c1C-KG-XXK"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Caesar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3c-ye-LAd">
                                 <rect key="frame" x="16" y="28" width="343" height="37"/>
@@ -251,7 +269,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="eK2-Bn-8dH"/>
+                    <tabBarItem key="tabBarItem" title="Caesar" id="eK2-Bn-8dH"/>
+                    <connections>
+                        <outlet property="decryptField" destination="6aV-Ie-nSX" id="l1X-yz-gr3"/>
+                        <outlet property="decryptView" destination="Cfc-Vg-Ez5" id="5fI-H9-FQI"/>
+                        <outlet property="encryptField" destination="Ck0-2W-lid" id="7IS-Pa-KQJ"/>
+                        <outlet property="encryptView" destination="lGf-Sb-66p" id="CbP-1C-5lx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Atd-Uk-l2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
