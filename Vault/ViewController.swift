@@ -77,6 +77,50 @@ class ViewController: UIViewController {
         decryptView.text = arrayMessageString
         
     }
+    @IBOutlet weak var vigenereEncryptField: UITextField!
+    @IBOutlet weak var vigenereDecryptField: UITextField!
+    @IBOutlet weak var vigenereKeyField: UITextField!
+    @IBOutlet weak var vigenereKeyDField: UITextField!
+    @IBOutlet weak var vigenereEncryptView: UITextView!
+    @IBOutlet weak var vigenereDecryptView: UITextView!
+    @IBAction func vigenereEncrypt(_ sender: UIButton) {
+        var vigenereEncryptMessage = vigenereEncryptField.text
+        vigenereEncryptMessage = vigenereEncryptMessage?.uppercased()
+        var vigenereKey = vigenereKeyField.text
+        vigenereKey = vigenereKey?.uppercased()
+        let messageCount : Int = (vigenereEncryptMessage?.characters.count)!
+        var arrayMessage = vigenereEncryptMessage?.characters.map { String($0) }
+        var arrayKey = vigenereKey?.characters.map { String($0) }
+        var messageTrack = 0
+        var keyTrack = 0
+        var encryptTrack = 0
+        var output = [String]()
+        count = 0
+        while count < messageCount {
+            while letterCount < 26 {
+                if arrayMessage?[count] == original[letterCount] {
+                    messageTrack = letterCount
+                }
+                if arrayKey?[count] == original[letterCount] {
+                    keyTrack = letterCount
+                }
+                if messageTrack != 0 && keyTrack != 0 {
+                    encryptTrack = messageTrack + keyTrack
+                    encryptTrack = encryptTrack % 25
+                }
+                letterCount += 1
+                
+            }
+            output.append(original[encryptTrack])
+            
+            
+            letterCount = 0
+            count += 1
+
+        }
+        let outputString = output.joined(separator: "")
+        vigenereEncryptView.text = outputString
+    }
     @IBAction func transferMessage(_ sender: UIButton) {
         decryptField.text = encryptView.text
     }
