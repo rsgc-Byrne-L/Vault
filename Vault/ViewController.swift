@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     // Declare variables to use for counting
     var count = 0
     var count2 = 0
+    var check = false
     var letterCount = 0
     
     // MARK: Properties
@@ -130,7 +131,13 @@ class ViewController: UIViewController {
         
         count = 0
         while count < messageCount {
+            check = false
             while letterCount < 26 {
+                if arrayMessage[count] == " " {
+                    letterCount = 26
+                    check = true
+                    output.append(" ")
+                } else {
                 if arrayMessage[count] == original[letterCount] {
                     messageTrack = letterCount
                 }
@@ -142,11 +149,11 @@ class ViewController: UIViewController {
                     encryptTrack = encryptTrack % 25
                 }
                 letterCount += 1
-                
+                }
             }
+            if check != true {
             output.append(original[encryptTrack])
-            
-            
+            }
             letterCount = 0
             count += 1
             
