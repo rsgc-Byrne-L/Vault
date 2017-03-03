@@ -15,8 +15,9 @@ class ViewController: UIViewController {
     var cipher = ["X","Y","Z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W"]
     // Declare variables to use for counting
     var count = 0
+    var count2 = 0
     var letterCount = 0
-
+    
     // MARK: Properties
     @IBOutlet weak var encryptField: UITextField!
     @IBOutlet weak var decryptField: UITextField!
@@ -42,8 +43,8 @@ class ViewController: UIViewController {
                     arrayMessage?[count] = cipher[letterCount]
                     letterCount = 26
                 } else {
-                letterCount += 1
-            }
+                    letterCount += 1
+                }
             }
             letterCount = 0
             count += 1
@@ -83,25 +84,57 @@ class ViewController: UIViewController {
     @IBOutlet weak var vigenereKeyDField: UITextField!
     @IBOutlet weak var vigenereEncryptView: UITextView!
     @IBOutlet weak var vigenereDecryptView: UITextView!
+    
     @IBAction func vigenereEncrypt(_ sender: UIButton) {
-        var vigenereEncryptMessage = vigenereEncryptField.text
-        vigenereEncryptMessage = vigenereEncryptMessage?.uppercased()
-        var vigenereKey = vigenereKeyField.text
-        vigenereKey = vigenereKey?.uppercased()
-        let messageCount : Int = (vigenereEncryptMessage?.characters.count)!
-        var arrayMessage = vigenereEncryptMessage?.characters.map { String($0) }
-        var arrayKey = vigenereKey?.characters.map { String($0) }
         var messageTrack = 0
         var keyTrack = 0
         var encryptTrack = 0
         var output = [String]()
+
+        // Get the text from the textfield if there is any
+        guard let vigenereKey = vigenereKeyField.text?.uppercased() else {
+            return
+        }
+        
+        guard let vigenereEncryptMessage = vigenereEncryptField.text?.uppercased() else {
+            return
+        }
+        
+        // Get the length of the message
+        let messageCount : Int = vigenereEncryptMessage.characters.count
+        
+        // Convert the message into an array of Characters
+        var arrayMessage = vigenereEncryptMessage.characters.map { String($0)}
+
+        // Get the length of the key
+        let keyCount : Int = vigenereKey.characters.count
+        
+        // Convert the key into an array of Characters
+        var arrayKey = vigenereKey.characters.map { String($0)}
+        
+        if keyCount < messageCount {
+            count2 = keyCount
+            count = 0
+            while count2 < messageCount {
+                arrayKey.append(arrayKey[count])
+                count2 += 1
+                count += 1
+            }
+        } else if keyCount > messageCount {
+            count = keyCount
+            while count > messageCount {
+                arrayKey.remove(at: (count-1))
+                count -= 1
+            }
+        }
+        
         count = 0
         while count < messageCount {
             while letterCount < 26 {
-                if arrayMessage?[count] == original[letterCount] {
+                if arrayMessage[count] == original[letterCount] {
                     messageTrack = letterCount
                 }
-                if arrayKey?[count] == original[letterCount] {
+                if arrayKey[count] == original[letterCount] {
                     keyTrack = letterCount
                 }
                 if messageTrack != 0 && keyTrack != 0 {
@@ -116,10 +149,10 @@ class ViewController: UIViewController {
             
             letterCount = 0
             count += 1
-
-        }
+            
         let outputString = output.joined(separator: "")
         vigenereEncryptView.text = outputString
+        }
     }
     @IBAction func transferMessage(_ sender: UIButton) {
         decryptField.text = encryptView.text
@@ -154,14 +187,14 @@ class ViewController: UIViewController {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     
-
-
+    
+    
 }
 
