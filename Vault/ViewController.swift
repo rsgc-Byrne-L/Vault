@@ -24,6 +24,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var decryptField: UITextField!
     @IBOutlet weak var encryptView: UITextView!
     @IBOutlet weak var decryptView: UITextView!
+    @IBOutlet weak var caesarHelpView: UITextView!
+    @IBOutlet weak var vigenereEncryptField: UITextField!
+    @IBOutlet weak var vigenereDecryptField: UITextField!
+    @IBOutlet weak var vigenereKeyField: UITextField!
+    @IBOutlet weak var vigenereKeyDField: UITextField!
+    @IBOutlet weak var vigenereEncryptView: UITextView!
+    @IBOutlet weak var vigenereDecryptView: UITextView!
+    // Function to encrypt using caesar cipher when clicked
     @IBAction func doEncrypt(_ sender: UIButton) {
         // Take user's input
         var encryptMessage: String? = encryptField.text
@@ -56,6 +64,7 @@ class ViewController: UIViewController {
         encryptView.text = arrayMessageString
         
     }
+    // Function to decrypt using caesar cipher when clicked
     @IBAction func doDecrypt(_ sender: UIButton) {
         var decryptMessage: String? = decryptField.text
         decryptMessage = decryptMessage?.uppercased()
@@ -79,13 +88,7 @@ class ViewController: UIViewController {
         decryptView.text = arrayMessageString
         
     }
-    @IBOutlet weak var vigenereEncryptField: UITextField!
-    @IBOutlet weak var vigenereDecryptField: UITextField!
-    @IBOutlet weak var vigenereKeyField: UITextField!
-    @IBOutlet weak var vigenereKeyDField: UITextField!
-    @IBOutlet weak var vigenereEncryptView: UITextView!
-    @IBOutlet weak var vigenereDecryptView: UITextView!
-    
+    // Function to encrypt using caesar vigenere when clicked
     @IBAction func vigenereEncrypt(_ sender: UIButton) {
         var messageTrack = 0
         var keyTrack = 0
@@ -164,15 +167,17 @@ class ViewController: UIViewController {
     @IBAction func transferMessage(_ sender: UIButton) {
         decryptField.text = encryptView.text
     }
-    
+    // Clears fields and views for both caesar and vigenere cipher (only encrypt)
     @IBAction func clearEncrypt(_ sender: UIButton) {
         encryptField.text = ""
         encryptView.text = ""
     }
+    // Clears fields and views for both caesar and vigenere cipher (only decrypt)
     @IBAction func clearDecrypt(_ sender: UIButton) {
         decryptField.text = ""
         decryptView.text = ""
     }
+    // Clears fields and views for both caesar and vigenere cipher (both)
     @IBAction func clearAll(_ sender: UIButton) {
         encryptField.text = ""
         encryptView.text = ""
@@ -181,6 +186,14 @@ class ViewController: UIViewController {
     }
     @IBAction func unwindToViewController (sender: UIStoryboardSegue){
         
+    }
+    // Back button for switching back and forth for help tabs
+    @IBAction func caesarHelpBack(_ sender: UIButton) {
+        caesarHelpView.text = "Known as one of the simplest encryption methods, Caesar Cipher simply takes each letter and shifts them a certain number of letters (in this case 3)."
+    }
+    // Next button for switching back and forth for help tabs
+    @IBAction func caesarHelpNext(_ sender: UIButton) {
+        caesarHelpView.text = "For example, the message: 'Hello friend!' would encrypt into 'EBIIL COFBKA!'. As you can see, each letter is first uppercased, and then shifted back by 3."
     }
     override func viewDidLoad() {
         super.viewDidLoad()
