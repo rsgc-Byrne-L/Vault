@@ -90,79 +90,8 @@ class ViewController: UIViewController {
     }
     // Function to encrypt using caesar vigenere when clicked
     @IBAction func vigenereEncrypt(_ sender: UIButton) {
-        var messageTrack = 0
-        var keyTrack = 0
-        var encryptTrack = 0
-        var output = [String]()
-
-        // Get the text from the textfield if there is any
-        guard let vigenereKey = vigenereKeyField.text?.uppercased() else {
-            return
-        }
-        
-        guard let vigenereEncryptMessage = vigenereEncryptField.text?.uppercased() else {
-            return
-        }
-        
-        // Get the length of the message
-        let messageCount : Int = vigenereEncryptMessage.characters.count
-        
-        // Convert the message into an array of Characters
-        var arrayMessage = vigenereEncryptMessage.characters.map { String($0)}
-
-        // Get the length of the key
-        let keyCount : Int = vigenereKey.characters.count
-        
-        // Convert the key into an array of Characters
-        var arrayKey = vigenereKey.characters.map { String($0)}
-        
-        if keyCount < messageCount {
-            count2 = keyCount
-            count = 0
-            while count2 < messageCount {
-                arrayKey.append(arrayKey[count])
-                count2 += 1
-                count += 1
-            }
-        } else if keyCount > messageCount {
-            count = keyCount
-            while count > messageCount {
-                arrayKey.remove(at: (count-1))
-                count -= 1
-            }
-        }
-        
-        count = 0
-        while count < messageCount {
-            check = false
-            while letterCount < 26 {
-                if arrayMessage[count] == " " {
-                    letterCount = 26
-                    check = true
-                    output.append(" ")
-                } else {
-                if arrayMessage[count] == original[letterCount] {
-                    messageTrack = letterCount
-                }
-                if arrayKey[count] == original[letterCount] {
-                    keyTrack = letterCount
-                }
-                if messageTrack != 0 && keyTrack != 0 {
-                    encryptTrack = messageTrack + keyTrack
-                    encryptTrack = encryptTrack % 25
-                }
-                letterCount += 1
-                }
-            }
-            if check != true {
-            output.append(original[encryptTrack])
-            }
-            letterCount = 0
-            count += 1
-            
-        let outputString = output.joined(separator: "")
-        vigenereEncryptView.text = outputString
-        }
+        let answer = vEncrypt(plainText: "hello")
+        print(answer)
     }
     @IBAction func transferMessage(_ sender: UIButton) {
         decryptField.text = encryptView.text
@@ -195,6 +124,7 @@ class ViewController: UIViewController {
     @IBAction func caesarHelpNext(_ sender: UIButton) {
         caesarHelpView.text = "For example, the message: 'Hello friend!' would encrypt into 'EBIIL COFBKA!'. As you can see, each letter is first uppercased, and then shifted back by 3."
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -212,9 +142,6 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
     
 }
 
