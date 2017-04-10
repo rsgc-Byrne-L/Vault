@@ -119,12 +119,11 @@ class ViewController: UIViewController {
                 k += 1
             }
             k = 0
-            output.append(alphabet[letterTrack-1])
+            output.append(alphabet[letterTrack])
             letterTrack = 0
             i += 1
         }
         }
-        print("output = \(output)")
         
         let arrayKeyString = key.flatMap { String($0) }
         let arrayKeyStringF = arrayKeyString.joined(separator: "")
