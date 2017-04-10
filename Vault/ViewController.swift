@@ -11,11 +11,13 @@ import UIKit
 class ViewController: UIViewController {
     // Declare array that contains the alphabet, will be used to check the message
     var original = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    let alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     // Declare array that contains the cipher, which is a shift of 3 from original, will be used to encrypt the message
     var cipher = ["X","Y","Z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W"]
     // Declare variables to use for counting
     var count = 0
     var count2 = 0
+    var answer = ""
     var check = false
     var letterCount = 0
     
@@ -90,8 +92,43 @@ class ViewController: UIViewController {
     }
     // Function to encrypt using caesar vigenere when clicked
     @IBAction func vigenereEncrypt(_ sender: UIButton) {
-        let answer = vEncrypt(plainText: "hello")
-        print(answer)
+        var plainText = vigenereEncryptField.text
+        plainText = plainText?.uppercased()
+        let key = self.key(count: (plainText?.characters.count)!)
+        var arrayMessage = plainText?.characters.map { String($0) }
+        var output = String()
+        var textCount = key.count
+        var letterTrack = 0
+        var i = 0
+        var k = 0
+        
+        while i < textCount {
+            while arrayMessage?[i] != alphabet[letterTrack] {
+                letterTrack += 1
+            }
+            while k <= key[i] {
+            letterTrack += 1
+            if letterTrack > 25 {
+                letterTrack = 0
+            }
+                k += 1
+            }
+            k = 0
+            output.append(alphabet[letterTrack-1])
+            letterTrack = 0
+            i += 1
+        }
+        
+        print("output = \(output)")
+        
+        let arrayKeyString = key.flatMap { String($0) }
+        let arrayKeyStringF = arrayKeyString.joined(separator: "")
+        
+        vigenereKeyField.text = arrayKeyStringF
+        vigenereEncryptView.text = output
+    }
+    @IBAction func vigenereDecrypt(_ sender: UIButton) {
+        
     }
     @IBAction func transferMessage(_ sender: UIButton) {
         decryptField.text = encryptView.text
@@ -131,6 +168,31 @@ class ViewController: UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
         
         view.addGestureRecognizer(tap)
+    }
+    
+    func key (count: Int) -> [Int] {
+        var key = [Int]()
+        
+        for _ in 0..<count {
+            key.append(Int(arc4random() % 10))
+        }
+        
+        return key
+    }
+    
+    func map() -> (forward: [String : Int], reversed: [Int : String], lastCharacterIndex: Int)
+    {
+        var forward = [String : Int]()
+        var reversed = [Int : String]()
+        var lastCharacterIndex = 0
+        
+        for (index, letter) in self.alphabet.enumerated() {
+            forward[letter] = index
+            reversed[index] = letter
+            lastCharacterIndex = index
+        }
+        
+        return (forward: forward, reversed: reversed, lastCharacterIndex: lastCharacterIndex)
     }
     
     func dismissKeyboard() {

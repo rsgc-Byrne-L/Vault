@@ -57,7 +57,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Go"/>
                                 <connections>
-                                    <action selector="vigenereDecrypt:" destination="wKd-HP-IKc" eventType="touchUpInside" id="6Ks-BP-lSW"/>
+                                    <action selector="vigenereDecrypt:" destination="wKd-HP-IKc" eventType="touchUpInside" id="qcV-nN-QMV"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uzd-Xa-Nnv">
