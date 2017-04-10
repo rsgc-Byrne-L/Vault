@@ -94,7 +94,7 @@ class ViewController: UIViewController {
     @IBAction func vigenereEncrypt(_ sender: UIButton) {
         var plainText = vigenereEncryptField.text
         plainText = plainText?.uppercased()
-        let key = self.key(count: (plainText?.characters.count)!)
+        var key = self.key(count: (plainText?.characters.count)!)
         var arrayMessage = plainText?.characters.map { String($0) }
         var output = String()
         var textCount = key.count
@@ -103,6 +103,11 @@ class ViewController: UIViewController {
         var k = 0
         
         while i < textCount {
+            if arrayMessage?[i] == " " {
+                output.append(" ")
+                letterTrack = 0
+                i += 1
+            } else {
             while arrayMessage?[i] != alphabet[letterTrack] {
                 letterTrack += 1
             }
@@ -118,7 +123,7 @@ class ViewController: UIViewController {
             letterTrack = 0
             i += 1
         }
-        
+        }
         print("output = \(output)")
         
         let arrayKeyString = key.flatMap { String($0) }
