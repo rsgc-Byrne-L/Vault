@@ -108,21 +108,21 @@ class ViewController: UIViewController {
                 letterTrack = 0
                 i += 1
             } else {
-            while arrayMessage?[i] != alphabet[letterTrack] {
-                letterTrack += 1
-            }
-            while k <= key[i] {
-            letterTrack += 1
-            if letterTrack > 25 {
+                while arrayMessage?[i] != alphabet[letterTrack] {
+                    letterTrack += 1
+                }
+                while k <= key[i] {
+                    letterTrack += 1
+                    if letterTrack > 25 {
+                        letterTrack = 0
+                    }
+                    k += 1
+                }
+                k = 0
+                output.append(alphabet[letterTrack])
                 letterTrack = 0
+                i += 1
             }
-                k += 1
-            }
-            k = 0
-            output.append(alphabet[letterTrack])
-            letterTrack = 0
-            i += 1
-        }
         }
         
         let arrayKeyString = key.flatMap { String($0) }
@@ -132,7 +132,45 @@ class ViewController: UIViewController {
         vigenereEncryptView.text = output
     }
     @IBAction func vigenereDecrypt(_ sender: UIButton) {
+        var cipherText = vigenereDecryptField.text
+        cipherText = cipherText?.uppercased()
+        var keyString = vigenereKeyDField.text
+        var key = [Int]()
+        for element in (keyString?.characters)!
+        {
+            key.append(Int(String(element))!)
+        }
+        var arrayMessage = cipherText?.characters.map { String($0) }
+        var output = String()
+        var textCount = key.count
+        var letterTrack = 0
+        var i = 0
+        var k = 0
         
+        while i < textCount {
+            if arrayMessage?[i] == " " {
+                output.append(" ")
+                letterTrack = 0
+                i += 1
+            } else {
+                while arrayMessage?[i] != alphabet[letterTrack] {
+                    letterTrack += 1
+                }
+                while k <= key[i] {
+                    letterTrack -= 1
+                    if letterTrack <= 0 {
+                        letterTrack = 25
+                    }
+                    k += 1
+                }
+                k = 0
+                output.append(alphabet[letterTrack])
+                letterTrack = 0
+                i += 1
+            }
+        }
+        
+        vigenereDecryptView.text = output
     }
     @IBAction func transferMessage(_ sender: UIButton) {
         decryptField.text = encryptView.text
