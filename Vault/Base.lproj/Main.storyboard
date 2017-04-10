@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Vigenere-->
+        <!--Vernam-->
         <scene sceneID="OZC-5q-KsN">
             <objects>
                 <viewController id="wKd-HP-IKc" customClass="ViewController" customModule="Vault" sceneMemberID="viewController">
@@ -152,7 +152,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Vigenere" image="Vigenere" selectedImage="Vigenere" id="zHZ-2h-rlm"/>
+                    <tabBarItem key="tabBarItem" title="Vernam" image="Vigenere" selectedImage="Vigenere" id="zHZ-2h-rlm"/>
                     <connections>
                         <outlet property="vigenereDecryptField" destination="Rqx-VB-sSt" id="8Bw-nn-il7"/>
                         <outlet property="vigenereDecryptView" destination="p6m-g7-3se" id="dbz-tv-Brg"/>
