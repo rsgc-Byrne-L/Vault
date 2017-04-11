@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var encryptView: UITextView!
     @IBOutlet weak var decryptView: UITextView!
     @IBOutlet weak var caesarHelpView: UITextView!
+    @IBOutlet weak var vigenereHelpView: UITextView!
     @IBOutlet weak var vigenereEncryptField: UITextField!
     @IBOutlet weak var vigenereDecryptField: UITextField!
     @IBOutlet weak var vigenereKeyDField: UITextField!
@@ -235,6 +236,12 @@ class ViewController: UIViewController {
     // Next button for switching back and forth for help tabs
     @IBAction func caesarHelpNext(_ sender: UIButton) {
         caesarHelpView.text = "For example, the message: 'Hello friend!' would encrypt into 'EBIIL COFBKA!'. As you can see, each letter is first uppercased, and then shifted back by 3."
+    }
+    @IBAction func vigenereHelpBack(_ sender: UIButton) {
+        vigenereHelpView.text = "A much more secure encryption method compared to Caesar cipher. It begins by creating a random key with the same length as the message."
+    }
+    @IBAction func vigenereHelpNext(_ sender: UIButton) {
+        vigenereHelpView.text = "It then takes each letter from the message and combines it with each number in the key. For example, the message 'hello' with a key of '62957' would turn into 'OHVRW'."
     }
     
     override func viewDidLoad() {

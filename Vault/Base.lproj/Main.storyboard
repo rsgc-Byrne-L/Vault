@@ -187,7 +187,7 @@
                                     <segue destination="PNt-MM-OtA" kind="unwind" unwindAction="unwindToViewControllerWithSender:" id="tgA-ME-fC4"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vigenere Cipher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t73-ga-wj7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vernam Cipher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t73-ga-wj7">
                                 <rect key="frame" x="112" y="20" width="150" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="22"/>
@@ -202,10 +202,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VVr-QK-BmZ">
-                                <rect key="frame" x="67" y="236" width="240" height="117"/>
+                                <rect key="frame" x="67" y="236" width="240" height="111"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Also a pretty simple encryption method, but a step higher than Caesar cipher. Takes a letter from both message and key and lines them up on the Vigenere table, this is done for each letter.</string>
+                                <string key="text">A much more secure encryption method compared to Caesar cipher. It begins by creating a random key with the same length as the message.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -215,6 +215,7 @@
                                 <state key="normal" title="&lt;"/>
                                 <connections>
                                     <action selector="caesarHelpBack:" destination="RMp-ZX-zj5" eventType="touchUpInside" id="phP-Ai-eRk"/>
+                                    <action selector="vigenereHelpBack:" destination="Mhe-EN-3Rp" eventType="touchUpInside" id="EVY-a5-HB5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPo-xw-kxI">
@@ -223,6 +224,7 @@
                                 <state key="normal" title="&gt;"/>
                                 <connections>
                                     <action selector="caesarHelpNext:" destination="RMp-ZX-zj5" eventType="touchUpInside" id="hgQ-wr-E9s"/>
+                                    <action selector="vigenereHelpNext:" destination="Mhe-EN-3Rp" eventType="touchUpInside" id="o8W-7S-cJu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcb-wr-p8f">
@@ -235,6 +237,7 @@
                                 <connections>
                                     <action selector="doEncrypt:" destination="RMp-ZX-zj5" eventType="touchUpInside" id="UaM-2G-vPn"/>
                                     <action selector="doEncrypt:" destination="SWt-bv-XyG" eventType="touchUpInside" id="g04-kr-hFr"/>
+                                    <action selector="vigenereEncrypt:" destination="Mhe-EN-3Rp" eventType="touchUpInside" id="aRq-hY-0ou"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Try it out!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Lh-eo-iQe">
@@ -244,15 +247,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message to decrypt" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GH3-aA-K5b">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message to encrypt" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GH3-aA-K5b">
                                 <rect key="frame" x="62" y="410" width="250" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pMd-Vq-yet">
-                                <rect key="frame" x="63" y="448" width="250" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -266,12 +262,25 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="VC" translatesAutoresizingMaskIntoConstraints="NO" id="xxg-oG-dFM">
-                                <rect key="frame" x="26" y="119" width="324" height="92"/>
+                                <rect key="frame" x="26" y="100" width="324" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sRw-X5-EHR">
+                                <rect key="frame" x="63" y="448" width="249" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="vigenereEncryptField" destination="GH3-aA-K5b" id="AeF-4f-961"/>
+                        <outlet property="vigenereEncryptView" destination="tN2-qc-Asf" id="c4y-DZ-Z77"/>
+                        <outlet property="vigenereHelpView" destination="VVr-QK-BmZ" id="1Px-GB-5U4"/>
+                        <outlet property="vigenereKeyView" destination="sRw-X5-EHR" id="kv8-W0-4CI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fze-ud-kMx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="PNt-MM-OtA" userLabel="Exit" sceneMemberID="exit"/>
@@ -563,7 +572,7 @@
     <resources>
         <image name="CC" width="856" height="361"/>
         <image name="Caesar" width="30" height="30"/>
-        <image name="VC" width="1116" height="304"/>
+        <image name="VC" width="373" height="166"/>
         <image name="Vigenere" width="30" height="30"/>
     </resources>
 </document>
