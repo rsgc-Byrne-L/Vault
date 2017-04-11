@@ -92,6 +92,16 @@ class ViewController: UIViewController {
     }
     // Function to encrypt using caesar vigenere when clicked
     @IBAction func vigenereEncrypt(_ sender: UIButton) {
+        let numberCharacters = NSCharacterSet.decimalDigits
+        if vigenereEncryptField.text?.rangeOfCharacter(from: numberCharacters) != nil {
+            let alert = UIAlertController(title: "Whoops!", message: "Message can't include numbers!", preferredStyle: UIAlertControllerStyle.alert)
+            
+            // add an action (button)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        } else {
         var plainText = vigenereEncryptField.text
         plainText = plainText?.uppercased()
         var key = self.key(count: (plainText?.characters.count)!)
@@ -130,6 +140,7 @@ class ViewController: UIViewController {
         
         vigenereKeyField.text = arrayKeyStringF
         vigenereEncryptView.text = output
+        }
     }
     @IBAction func vigenereDecrypt(_ sender: UIButton) {
         if let _ = Int(vigenereKeyDField.text!) {
