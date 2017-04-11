@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     var letterCount = 0
     
     // MARK: Properties
+    @IBOutlet weak var vigenereKeyView: UITextView!
     @IBOutlet weak var encryptField: UITextField!
     @IBOutlet weak var decryptField: UITextField!
     @IBOutlet weak var encryptView: UITextView!
@@ -29,7 +30,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var caesarHelpView: UITextView!
     @IBOutlet weak var vigenereEncryptField: UITextField!
     @IBOutlet weak var vigenereDecryptField: UITextField!
-    @IBOutlet weak var vigenereKeyField: UITextField!
     @IBOutlet weak var vigenereKeyDField: UITextField!
     @IBOutlet weak var vigenereEncryptView: UITextView!
     @IBOutlet weak var vigenereDecryptView: UITextView!
@@ -138,7 +138,7 @@ class ViewController: UIViewController {
         let arrayKeyString = key.flatMap { String($0) }
         let arrayKeyStringF = arrayKeyString.joined(separator: "")
         
-        vigenereKeyField.text = arrayKeyStringF
+        vigenereKeyView.text = arrayKeyStringF
         vigenereEncryptView.text = output
         }
     }
