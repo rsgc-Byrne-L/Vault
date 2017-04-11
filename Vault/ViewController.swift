@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    // Declare array that contains the alphabet, will be used to check the message
+    // Declare arrays that contain the alphabet, will be used to check the message for various ciphers
     var original = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     let alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     // Declare array that contains the cipher, which is a shift of 3 from original, will be used to encrypt the message
@@ -69,15 +69,21 @@ class ViewController: UIViewController {
     }
     // Function to decrypt using caesar cipher when clicked
     @IBAction func doDecrypt(_ sender: UIButton) {
+        // Grab user input and uppercase it
         var decryptMessage: String? = decryptField.text
         decryptMessage = decryptMessage?.uppercased()
         let messageCount : Int = (decryptMessage?.characters.count)!
+        // Put the message in an array
         var arrayMessage = decryptMessage?.characters.map { String($0) }
         count = 0
         letterCount = 0
+        // Loop over messageCount (length of message)
         while count < messageCount {
+            // Loop over the alphabet
             while letterCount < 26 {
+                // If the letter is the same as the letter in the cipher
                 if arrayMessage?[count] == cipher[letterCount] {
+                    // Set the letter to another letter (shifted 3)
                     arrayMessage?[count] = original[letterCount]
                     letterCount = 26
                 } else {
@@ -87,14 +93,19 @@ class ViewController: UIViewController {
             letterCount = 0
             count += 1
         }
+        // Return the array into string
         let arrayMessageString = arrayMessage?.joined(separator: "")
+        // Display the encrypted message
         decryptView.text = arrayMessageString
         
     }
     // Function to encrypt using caesar vigenere when clicked
     @IBAction func vigenereEncrypt(_ sender: UIButton) {
+        // Variable to help check if string is composed of numbers
         let numberCharacters = NSCharacterSet.decimalDigits
+        // Check if number is numbers
         if vigenereEncryptField.text?.rangeOfCharacter(from: numberCharacters) != nil {
+            // If there are numbers, display this alert
             let alert = UIAlertController(title: "Whoops!", message: "Message can't include numbers!", preferredStyle: UIAlertControllerStyle.alert)
             
             // add an action (button)
@@ -103,47 +114,74 @@ class ViewController: UIViewController {
             // show the alert
             self.present(alert, animated: true, completion: nil)
         } else {
+            // If not, run normally
         var plainText = vigenereEncryptField.text
         plainText = plainText?.uppercased()
+            // Get the count (generate the key)
         var key = self.key(count: (plainText?.characters.count)!)
+            // Put the plainText into an array
         var arrayMessage = plainText?.characters.map { String($0) }
         var output = String()
+            // Get length of the key (and text)
         var textCount = key.count
         var letterTrack = 0
         var i = 0
         var k = 0
         
+            // Count over the message/key length
         while i < textCount {
+            // Check if there is a space, if there is, add space to the final output
             if arrayMessage?[i] == " " {
                 output.append(" ")
                 letterTrack = 0
                 i += 1
+                // If no space...
             } else {
+                // Loop over the message and check if it equal to each letter in the alphabet, if not add one to letterCount and keep checking
                 while arrayMessage?[i] != alphabet[letterTrack] {
                     letterTrack += 1
                 }
+                // After finding where the letter lies, add how ever much the key is
                 while k <= key[i] {
                     letterTrack += 1
-                    if letterTrack > 25 {
+                    // Make sure that it doesnt go over the amount of letters in the alphabet
+                    if letterTrack > 26 {
                         letterTrack = 0
                     }
                     k += 1
                 }
                 k = 0
+                // Add the letter into the output
                 output.append(alphabet[letterTrack])
                 letterTrack = 0
                 i += 1
             }
         }
         
+            // Return the array into a string
         let arrayKeyString = key.flatMap { String($0) }
         let arrayKeyStringF = arrayKeyString.joined(separator: "")
         
+            // Display the generated key
         vigenereKeyView.text = arrayKeyStringF
+            // Display the final output
         vigenereEncryptView.text = output
         }
     }
     @IBAction func vigenereDecrypt(_ sender: UIButton) {
+        // If the input is an int, continue, if else, display alert
+        // Variable to help check if string is composed of numbers
+        let numberCharacters = NSCharacterSet.decimalDigits
+        // Check if number is numbers
+        if vigenereDecryptField.text?.rangeOfCharacter(from: numberCharacters) != nil {
+            let alert = UIAlertController(title: "Whoops!", message: "Message must not have numbers!", preferredStyle: UIAlertControllerStyle.alert)
+            
+            // add an action (button)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        } else {
         if let _ = Int(vigenereKeyDField.text!) {
             if (vigenereKeyDField.text?.characters.count)! > (vigenereDecryptField.text?.characters.count)! {
                 let alert = UIAlertController(title: "Whoops!", message: "Key length must be shorter or equal to length of message!", preferredStyle: UIAlertControllerStyle.alert)
@@ -205,6 +243,7 @@ class ViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
 
     }
+        }
     }
     @IBAction func transferMessage(_ sender: UIButton) {
         decryptField.text = encryptView.text
@@ -226,6 +265,28 @@ class ViewController: UIViewController {
         decryptField.text = ""
         decryptView.text = ""
     }
+    @IBAction func vigenereTransterMessage(_ sender: UIButton) {
+        vigenereKeyDField.text = vigenereKeyView.text
+        vigenereDecryptField.text = vigenereEncryptView.text
+    }
+    @IBAction func vigenereEncryptClear(_ sender: UIButton) {
+        vigenereEncryptField.text = ""
+        vigenereEncryptView.text = ""
+        vigenereKeyView.text = ""
+    }
+    @IBAction func vigenereDecryptClear(_ sender: UIButton) {
+        vigenereDecryptField.text = ""
+        vigenereKeyDField.text = ""
+        vigenereDecryptView.text = ""
+    }
+    @IBAction func vigenereClearAll(_ sender: UIButton) {
+        vigenereEncryptField.text = ""
+        vigenereEncryptView.text = ""
+        vigenereKeyView.text = ""
+        vigenereDecryptField.text = ""
+        vigenereKeyDField.text = ""
+        vigenereDecryptView.text = ""
+    }
     @IBAction func unwindToViewController (sender: UIStoryboardSegue){
         
     }
@@ -237,9 +298,11 @@ class ViewController: UIViewController {
     @IBAction func caesarHelpNext(_ sender: UIButton) {
         caesarHelpView.text = "For example, the message: 'Hello friend!' would encrypt into 'EBIIL COFBKA!'. As you can see, each letter is first uppercased, and then shifted back by 3."
     }
+    // Back button for switching back and forth for help tabs
     @IBAction func vigenereHelpBack(_ sender: UIButton) {
         vigenereHelpView.text = "A much more secure encryption method compared to Caesar cipher. It begins by creating a random key with the same length as the message."
     }
+    // Next button for switching back and forth for help tabs
     @IBAction func vigenereHelpNext(_ sender: UIButton) {
         vigenereHelpView.text = "It then takes each letter from the message and combines it with each number in the key. For example, the message 'hello' with a key of '62957' would turn into 'OHVRW'."
     }

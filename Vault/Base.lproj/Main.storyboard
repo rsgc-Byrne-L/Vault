@@ -85,6 +85,9 @@
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="vigenereEncryptClear:" destination="wKd-HP-IKc" eventType="touchUpInside" id="d04-Yb-6k0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTB-eZ-70c">
                                 <rect key="frame" x="202" y="389" width="61" height="30"/>
@@ -93,6 +96,9 @@
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="vigenereDecryptClear:" destination="wKd-HP-IKc" eventType="touchUpInside" id="WMz-XA-0ja"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bB-Ro-2fF">
                                 <rect key="frame" x="112" y="427" width="150" height="30"/>
@@ -101,6 +107,9 @@
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Clear All"/>
+                                <connections>
+                                    <action selector="vigenereClearAll:" destination="wKd-HP-IKc" eventType="touchUpInside" id="ElA-qL-8fh"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loc-JH-zV6">
                                 <rect key="frame" x="107" y="201" width="150" height="30"/>
@@ -111,6 +120,9 @@
                                 <state key="normal" title="↓">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="vigenereTransterMessage:" destination="wKd-HP-IKc" eventType="touchUpInside" id="uLQ-zF-MgX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FB4-Qe-iOk">
                                 <rect key="frame" x="112" y="465" width="150" height="30"/>
