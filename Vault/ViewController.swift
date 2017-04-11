@@ -132,45 +132,67 @@ class ViewController: UIViewController {
         vigenereEncryptView.text = output
     }
     @IBAction func vigenereDecrypt(_ sender: UIButton) {
-        var cipherText = vigenereDecryptField.text
-        cipherText = cipherText?.uppercased()
-        var keyString = vigenereKeyDField.text
-        var key = [Int]()
-        for element in (keyString?.characters)!
-        {
-            key.append(Int(String(element))!)
-        }
-        var arrayMessage = cipherText?.characters.map { String($0) }
-        var output = String()
-        var textCount = key.count
-        var letterTrack = 0
-        var i = 0
-        var k = 0
-        
-        while i < textCount {
-            if arrayMessage?[i] == " " {
-                output.append(" ")
-                letterTrack = 0
-                i += 1
+        if let _ = Int(vigenereKeyDField.text!) {
+            if (vigenereKeyDField.text?.characters.count)! > (vigenereDecryptField.text?.characters.count)! {
+                let alert = UIAlertController(title: "Whoops!", message: "Key length must be shorter or equal to length of message!", preferredStyle: UIAlertControllerStyle.alert)
+                
+                // add an action (button)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                
+                // show the alert
+                self.present(alert, animated: true, completion: nil)
+                
             } else {
-                while arrayMessage?[i] != alphabet[letterTrack] {
-                    letterTrack += 1
-                }
-                while k <= key[i] {
-                    letterTrack -= 1
-                    if letterTrack <= 0 {
-                        letterTrack = 25
-                    }
-                    k += 1
-                }
-                k = 0
-                output.append(alphabet[letterTrack])
-                letterTrack = 0
-                i += 1
+            var cipherText = vigenereDecryptField.text
+            cipherText = cipherText?.uppercased()
+            var keyString = vigenereKeyDField.text
+            var key = [Int]()
+            for element in (keyString?.characters)!
+            {
+                key.append(Int(String(element))!)
             }
-        }
-        
-        vigenereDecryptView.text = output
+            var arrayMessage = cipherText?.characters.map { String($0) }
+            var output = String()
+            var textCount = key.count
+            var letterTrack = 0
+            var i = 0
+            var k = 0
+            
+            while i < textCount {
+                if arrayMessage?[i] == " " {
+                    output.append(" ")
+                    letterTrack = 0
+                    i += 1
+                } else {
+                    while arrayMessage?[i] != alphabet[letterTrack] {
+                        letterTrack += 1
+                    }
+                    while k <= key[i] {
+                        letterTrack -= 1
+                        if letterTrack <= 0 {
+                            letterTrack = 25
+                        }
+                        k += 1
+                    }
+                    k = 0
+                    output.append(alphabet[letterTrack])
+                    letterTrack = 0
+                    i += 1
+                }
+            }
+            
+            vigenereDecryptView.text = output
+            }
+        } else {
+            let alert = UIAlertController(title: "Whoops!", message: "Key must be composed of numbers!", preferredStyle: UIAlertControllerStyle.alert)
+            
+            // add an action (button)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+
+    }
     }
     @IBAction func transferMessage(_ sender: UIButton) {
         decryptField.text = encryptView.text
